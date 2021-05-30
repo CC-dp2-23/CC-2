@@ -1,0 +1,7 @@
+recordIndex,taskId,title,startMoment,endMoment,workloadHours,workloadFraction,description,link,isPublic
+2,T003,Tarea 3,2022/08/04 11:00,2022/08/15 12:00,20,,Esta es la descripción de la tarea 3,,false
+4,T004,Tarea 4,2022/04/25 12:00,2022/04/20 11:00,5,30,Esta es la descripción de la tarea 4,https://www.google.com/,false
+5,T004a,Tarea 4a,2022/04/20 11:00,2022/04/24 12:00,-5,30,Esta es la descripción de la tarea 4a,https://www.google.com/,false
+6,T005,sexsexsex,,,5,30,cialiscialiscialiscialis,https://www.google.com/,true
+8,T007,Tarea 7,2022/06/28 09:30,2022/07/11 22:59,0,,Esta es la descripción de la tarea 7,https://www.google.com/,true
+

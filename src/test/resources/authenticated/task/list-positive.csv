@@ -1,0 +1,12 @@
+recordIndex,taskId,title,startMoment,endMoment,workloadHours,workloadFraction,description,link,ownerName
+0,T013,Tarea 13,2021/01/23 08:20,2021/01/24 14:50,4,,Esta es la descripción de la tarea 13,https://www.google.com/,"Acme.com01, Manager01"
+1,T015,Tarea 15,2021/01/10 07:00,2021/03/28 22:15,35,,Esta es la descripción de la tarea 15,,"Acme.com01, Manager01"
+2,T028,Tarea 28,2020/01/05 08:20,2020/02/20 14:50,4,,Esta es la descripción de la tarea 28,https://www.google.com/,"Acme.com02, Manager02"
+3,T029,Tarea 29,2020/01/23 08:20,2020/01/24 14:50,2,,Esta es la descripción de la tarea 29,https://www.google.com/,"Acme.com02, Manager02"
+4,T030,Tarea 30,2020/04/12 08:20,2020/06/28 14:50,25,,Esta es la descripción de la tarea 30,https://www.google.com/,"Acme.com02, Manager02"
+5,T031,Tarea 31,2020/01/03 08:20,2020/05/04 14:50,40,,Esta es la descripción de la tarea 31,https://www.google.com/,"Acme.com02, Manager02"
+
+
+
+
+

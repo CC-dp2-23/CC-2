@@ -1,0 +1,2 @@
+recordIndex,taskId,title,startMoment,endMoment,workloadHours,workloadFraction,description,link,ownerName
+0,T003,Tarea 3,2022/08/04 11:00,2022/08/15 12:00,20,,Esta es la descripción de la tarea 3,,"Acme.com01, Manager01"

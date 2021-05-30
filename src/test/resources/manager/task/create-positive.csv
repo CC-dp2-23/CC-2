@@ -1,0 +1,13 @@
+recordIndex,taskId,title,startMoment,endMoment,workloadHours,workloadFraction,description,link,isPublic
+20,T090,Tarea 90,2022/12/07 13:00,2022/12/08 12:00,5,30,Esta es la descripción de la tarea 90,https://www.google.com/,false
+21,T091,Tarea 91,2022/12/07 13:00,2022/12/08 12:00,5,30,Esta es la descripción de la tarea 91,https://www.google.com/,true
+22,T092,Tarea 92,2022/12/07 13:00,2022/12/08 12:00,5,30,Esta es la descripción de la tarea 92,,false
+23,T093,Tarea 93,2022/12/07 13:00,2022/12/08 12:00,5,30,Esta es la descripción de la tarea 93,,true
+24,T094,Tarea 94,2022/12/07 13:00,2022/12/08 12:00,5,,Esta es la descripción de la tarea 94,https://www.google.com/,false
+25,T095,Tarea 95,2022/12/07 13:00,2022/12/08 12:00,5,,Esta es la descripción de la tarea 95,https://www.google.com/,true
+26,T096,Tarea 96,2022/12/07 13:00,2022/12/08 12:00,5,,Esta es la descripción de la tarea 96,,false
+27,T097,Tarea 97,2022/12/07 13:00,2022/12/08 12:00,5,,Esta es la descripción de la tarea 97,,true
+28,T098,Tarea 98,2022/12/07 13:00,2022/12/08 12:00,0,30,Esta es la descripción de la tarea 98,https://www.google.com/,false
+29,T099,Tarea 99,2022/12/07 13:00,2022/12/08 12:00,0,30,Esta es la descripción de la tarea 99,https://www.google.com/,true
+30,T100,Tarea 100,2022/12/07 13:00,2022/12/08 12:00,0,30,Esta es la descripción de la tarea 100,,false
+31,T101,Tarea 101,2022/12/07 13:00,2022/12/08 12:00,0,30,Esta es la descripción de la tarea 101,,true

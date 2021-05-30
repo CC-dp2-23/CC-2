@@ -1,0 +1,21 @@
+recordIndex,taskId,title,startMoment,endMoment,workloadHours,workloadFraction,description,link,isPublic
+0,T001,Tarea 1,2022/12/04 11:00,2022/12/07 12:00,10,,Esta es la descripción de la tarea 1,,false
+1,T002,Tarea 2,2022/08/10 11:00,2022/09/10 12:00,100,,Esta es la descripción de la tarea 2,https://www.google.com/,false
+2,T003,Tarea 3,2022/08/04 11:00,2022/08/15 12:00,20,,Esta es la descripción de la tarea 3,,true
+3,T003a,Tarea 3a,2022/08/04 11:00,2022/08/14 12:00,10,,Esta es la descripción de la tarea 3a,,true
+4,T004,Tarea 4,2022/04/20 11:00,2022/04/25 12:00,5,30,Esta es la descripción de la tarea 4,https://www.google.com/,false
+5,T004a,Tarea 4a,2022/04/20 11:00,2022/04/24 12:00,5,30,Esta es la descripción de la tarea 4a,https://www.google.com/,false
+6,T005,Tarea 5,2022/05/03 11:00,2022/05/23 12:00,30,,Esta es la descripción de la tarea 5,,true
+7,T006,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem,2022/11/15 11:00,2022/11/15 12:00,0,20,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s; when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries; but also the leap into electronic typesetting; remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages; and more recently with desktop p,https://www.google.com/,true
+8,T007,Tarea 7,2022/06/28 09:30,2022/07/11 22:59,35,,Esta es la descripción de la tarea 7,https://www.google.com/,true
+9,T007a,Tarea 7a,2022/06/28 09:30,2022/07/10 22:59,10,,Esta es la descripción de la tarea 7a,https://www.google.com/,true
+10,T008,Tarea 8,2022/03/05 13:15,2022/03/15 19:00,8,,Esta es la descripción de la tarea 8,,true
+11,T008a,Tarea 8a,2022/03/05 13:15,2022/03/14 19:00,8,,Esta es la descripción de la tarea 8a,,true
+12,T009,Tarea 9,2022/01/11 11:00,2022/03/21 23:00,50,15,Esta es la descripción de la tarea 9,https://www.google.com/,false
+13,T009a,Tarea 9a,2022/01/11 11:00,2022/03/20 23:00,40,15,Esta es la descripción de la tarea 9a,https://www.google.com/,false
+14,T010,Tarea 10,2022/05/25 08:00,2022/07/11 07:45,38,27,Esta es la descripción de la tarea 10,,true
+15,T011,Tarea 11,2022/04/23 11:00,2022/04/25 14:25,4,,Esta es la descripción de la tarea 11,,false
+16,T012,Tarea 12,2022/08/29 12:00,2022/08/31 10:40,7,35,Esta es la descripción de la tarea 12,,false
+17,T013,Tarea 13,2021/01/23 08:20,2021/01/24 14:50,4,,Esta es la descripción de la tarea 13,https://www.google.com/,true
+18,T014,Tarea 14,2021/01/18 11:15,2021/02/21 08:35,20,,Esta es la descripción de la tarea 14,,false
+19,T015,Tarea 15,2021/01/10 07:00,2021/03/28 22:15,35,,Esta es la descripción de la tarea 15,,true

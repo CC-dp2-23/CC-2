@@ -1,0 +1,2 @@
+recordIndex,taskId,title,startMoment,endMoment,workloadHours,workloadFraction,description,link,isPublic
+15,T026,Tarea 26,2022/08/24 11:00,2022/09/01 14:25,22,,Esta es la descripción de la tarea 26,,false

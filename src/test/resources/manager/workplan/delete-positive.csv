@@ -1,0 +1,2 @@
+recordIndex,title,suggestion,executionPeriodStart,executionPeriodEnd,workload,validTaskIds,modelTasks,isPublic
+0,Workplan 02,"<2022/03/04 08:00, 2022/07/12 17:00>",2022/03/05 05:00,2022/07/11 23:59,91h. 27min.,"T004, T004a, T005, T007, T007a, T008, T008a, T010, T011","T008, T010, T011, T004, T004a, T005",false

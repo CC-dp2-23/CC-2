@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+- sample-data.xml
+-
+- Copyright (C) 2012-2021 Rafael Corchuelo.
+-
+- In keeping with the traditional purpose of furthering education and research, it is
+- the policy of the copyright owner to permit non-commercial use and redistribution of
+- this software. It has been tested carefully, but it is not guaranteed for any particular
+- purposes.  The copyright owner does not offer any warranties or representations, nor do
+- they accept any liabilities with respect to them.
+-->
+
+<beans 
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="classpath:/WEB-INF/population/conversion-service.xml"/>	
+
+	<!-- Shouts -->
+	
+	<bean id="shout1" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/05/19 11:00" />
+		<property name="author" value="Shirou Emiya" />
+		<property name="text" value="People die if they're killed..." />
+		<property name="info"><null/></property>
+	</bean>
+	
+	<bean id="shout2" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/05/19 1:00" />
+		<property name="author" value="Yui Hirasawa" />
+		<property name="text" value="Fun things are fun." />
+		<property name="info" value="https://en.wikipedia.org/wiki/Fun" />	
+	</bean>
+	
+	<bean id="shout3" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/05/19 11:05" />
+		<property name="author" value="Tsubasa Hanekawa" />
+		<property name="text" value="I just know what I know." />
+	<property name="info"><null/></property>
+	</bean>
+	
+	<bean id="shout4" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/05/19 10:00" />
+		<property name="author" value="Hibiki Tachibana" />
+		<property name="text" value="Then I'll return alive; even if it kills me!" />
+		<property name="info" value="https://www.symphogear-gx.com/" />	
+	</bean>
+	
+	<bean id="shout5" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/05/19 11:30" />
+		<property name="author" value="Hatsume Aoba" />
+		<property name="text" value="Being all alone... is lonely." />
+		<property name="info"><null/></property>
+	</bean>
+	
+	<bean id="shout6" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/05/19 09:00" />
+		<property name="author" value="Cú Chulainn" />
+		<property name="text" value="So you dodged my undodgeable blow." />
+		<property name="info" value="https://www.google.com/" />	
+	</bean>
+	
+	<bean id="shout7" class="acme.entities.shouts.Shout">
+		<property name="moment" value="2021/05/19 10:05" />
+		<property name="author" value="Megumin" />
+		<property name="text" value="Ex-PLOSION~!" />
+		<property name="info" value="http://konosuba.com/" />
+	</bean>
+	
+	<!-- Managers -->
+	
+	<bean name="managerUserAccount01" class="acme.framework.entities.UserAccount">
+		<property name="username" value="manager01" />
+		<property name="password" value="manager01" />
+		<property name="enabled" value="True" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Manager01" />
+				<property name="surname" value="Acme.com01" />
+				<property name="email" value="manager01@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="managerManager01" />
+				<ref bean="managerAuthenticated01" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="managerManager01" class="acme.entities.roles.Manager">
+		<property name="userAccount" ref="managerUserAccount01" />
+	</bean>
+	
+	<bean name="managerAuthenticated01" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="managerUserAccount01" />
+	</bean>
+	
+	<bean name="managerUserAccount02" class="acme.framework.entities.UserAccount">
+		<property name="username" value="manager02" />
+		<property name="password" value="manager02" />
+		<property name="enabled" value="True" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Manager02" />
+				<property name="surname" value="Acme.com02" />
+				<property name="email" value="manager01@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="managerManager02" />
+				<ref bean="managerAuthenticated02" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="managerManager02" class="acme.entities.roles.Manager">
+		<property name="userAccount" ref="managerUserAccount02" />
+	</bean>
+	
+	<bean name="managerAuthenticated02" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="managerUserAccount02" />
+	</bean>
+	
+	<!-- Tasks -->
+	
+	<bean id="task01" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T001" />
+		<property name="title" value="Tarea 1" />
+		<property name="startMoment" value="2022/12/04 11:00" />
+		<property name="endMoment" value="2022/12/07 12:00" />
+		<property name="workloadHours" value="10" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 1" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task02" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T002" />
+		<property name="title" value="Tarea 2" />
+		<property name="startMoment" value="2022/08/10 11:00" />
+		<property name="endMoment" value="2022/09/10 12:00" />
+		<property name="workloadHours" value="100" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 2" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task03" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T003" />
+		<property name="title" value="Tarea 3" />
+		<property name="startMoment" value="2022/08/04 11:00" />
+		<property name="endMoment" value="2022/08/15 12:00" />
+		<property name="workloadHours" value="20" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 3" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+
+	<bean id="task03a" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T003a" />
+		<property name="title" value="Tarea 3a" />
+		<property name="startMoment" value="2022/08/04 11:00" />
+		<property name="endMoment" value="2022/08/14 12:00" />
+		<property name="workloadHours" value="10" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 3a" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	<bean id="task04" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T004" />
+		<property name="title" value="Tarea 4" />
+		<property name="startMoment" value="2022/04/20 11:00" />
+		<property name="endMoment" value="2022/04/25 12:00" />
+		<property name="workloadHours" value="5" />
+		<property name="workloadFraction" value="30" />
+		<property name="description" value="Esta es la descripción de la tarea 4" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task04a" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T004a" />
+		<property name="title" value="Tarea 4a" />
+		<property name="startMoment" value="2022/04/20 11:00" />
+		<property name="endMoment" value="2022/04/24 12:00" />
+		<property name="workloadHours" value="5" />
+		<property name="workloadFraction" value="30" />
+		<property name="description" value="Esta es la descripción de la tarea 4a" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task05" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T005" />
+		<property name="title" value="Tarea 5" />
+		<property name="startMoment" value="2022/05/03 11:00" />
+		<property name="endMoment" value="2022/05/23 12:00" />
+		<property name="workloadHours" value="30" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 5" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task06" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T006" />
+		<property name="title" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem" />
+		<property name="startMoment" value="2022/11/15 11:00" />
+		<property name="endMoment" value="2022/11/15 12:00" />
+		<property name="workloadHours" value="0" />
+		<property name="workloadFraction" value="20" />
+		<property name="description" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s; when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries; but also the leap into electronic typesetting; remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages; and more recently with desktop p" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task07" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T007" />
+		<property name="title" value="Tarea 7" />
+		<property name="startMoment" value="2022/06/28 09:30" />
+		<property name="endMoment" value="2022/07/11 22:59" />
+		<property name="workloadHours" value="35" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 7" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task07a" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T007a" />
+		<property name="title" value="Tarea 7a" />
+		<property name="startMoment" value="2022/06/28 09:30" />
+		<property name="endMoment" value="2022/07/10 22:59" />
+		<property name="workloadHours" value="10" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 7a" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task08" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T008" />
+		<property name="title" value="Tarea 8" />
+		<property name="startMoment" value="2022/03/05 13:15" />
+		<property name="endMoment" value="2022/03/15 19:00" />
+		<property name="workloadHours" value="8" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 8" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task08a" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T008a" />
+		<property name="title" value="Tarea 8a" />
+		<property name="startMoment" value="2022/03/05 13:15" />
+		<property name="endMoment" value="2022/03/14 19:00" />
+		<property name="workloadHours" value="8" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 8a" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task09" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T009" />
+		<property name="title" value="Tarea 9" />
+		<property name="startMoment" value="2022/01/11 11:00" />
+		<property name="endMoment" value="2022/03/21 23:00" />
+		<property name="workloadHours" value="50" />
+		<property name="workloadFraction" value="15" />
+		<property name="description" value="Esta es la descripción de la tarea 9" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task09a" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T009a" />
+		<property name="title" value="Tarea 9a" />
+		<property name="startMoment" value="2022/01/11 11:00" />
+		<property name="endMoment" value="2022/03/20 23:00" />
+		<property name="workloadHours" value="40" />
+		<property name="workloadFraction" value="15" />
+		<property name="description" value="Esta es la descripción de la tarea 9a" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task10" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T010" />
+		<property name="title" value="Tarea 10" />
+		<property name="startMoment" value="2022/05/25 08:00" />
+		<property name="endMoment" value="2022/07/11 07:45" />
+		<property name="workloadHours" value="38" />
+		<property name="workloadFraction" value="27" />
+		<property name="description" value="Esta es la descripción de la tarea 10" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task11" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T011" />
+		<property name="title" value="Tarea 11" />
+		<property name="startMoment" value="2022/04/23 11:00" />
+		<property name="endMoment" value="2022/04/25 14:25" />
+		<property name="workloadHours" value="4" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 11" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task12" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T012" />
+		<property name="title" value="Tarea 12" />
+		<property name="startMoment" value="2022/08/29 12:00" />
+		<property name="endMoment" value="2022/08/31 10:40" />
+		<property name="workloadHours" value="7" />
+		<property name="workloadFraction" value="35" />
+		<property name="description" value="Esta es la descripción de la tarea 12" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>	
+	
+	<!-- Finished Tasks -->
+	
+	<bean id="task13" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T013" />
+		<property name="title" value="Tarea 13" />
+		<property name="startMoment" value="2021/01/23 8:20" />
+		<property name="endMoment" value="2021/01/24 14:50" />
+		<property name="workloadHours" value="4" />
+		<property name="workloadFraction" ><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 13" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task14" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T014" />
+		<property name="title" value="Tarea 14" />
+		<property name="startMoment" value="2021/01/18 11:15" />
+		<property name="endMoment" value="2021/02/21 08:35" />
+		<property name="workloadHours" value="20" />
+		<property name="workloadFraction" ><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 14" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="task15" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T015" />
+		<property name="title" value="Tarea 15" />
+		<property name="startMoment" value="2021/01/10 07:00" />
+		<property name="endMoment" value="2021/03/28 22:15" />
+		<property name="workloadHours" value="35" />
+		<property name="workloadFraction" ><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 15" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<!-- Manager 2 Tasks -->
+	
+	<bean id="task16" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T016" />
+		<property name="title" value="Tarea 16" />
+		<property name="startMoment" value="2022/08/15 12:00" />
+		<property name="endMoment" value="2022/08/16 05:00" />
+		<property name="workloadHours" value="2" />
+		<property name="workloadFraction" ><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 16" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task17" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T017" />
+		<property name="title" value="Tarea 17" />
+		<property name="startMoment" value="2022/01/12 11:00" />
+		<property name="endMoment" value="2022/03/22 12:00" />
+		<property name="workloadHours" value="50" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 17" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task18" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T018" />
+		<property name="title" value="Tarea 18" />
+		<property name="startMoment" value="2022/03/06 11:00" />
+		<property name="endMoment" value="2022/03/16 12:00" />
+		<property name="workloadHours" value="20" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 18" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+
+	<bean id="task18a" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T018a" />
+		<property name="title" value="Tarea 18a" />
+		<property name="startMoment" value="2022/03/06 11:00" />
+		<property name="endMoment" value="2022/03/15 12:00" />
+		<property name="workloadHours" value="20" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 18a" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task19" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T019" />
+		<property name="title" value="Tarea 19" />
+		<property name="startMoment" value="2022/04/21 11:00" />
+		<property name="endMoment" value="2022/04/26 12:00" />
+		<property name="workloadHours" value="5" />
+		<property name="workloadFraction" value="30" />
+		<property name="description" value="Esta es la descripción de la tarea 19" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task19a" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T019a" />
+		<property name="title" value="Tarea 19a" />
+		<property name="startMoment" value="2022/04/20 11:00" />
+		<property name="endMoment" value="2022/04/24 12:00" />
+		<property name="workloadHours" value="5" />
+		<property name="workloadFraction" value="15" />
+		<property name="description" value="Esta es la descripción de la tarea 19a" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task20" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T020" />
+		<property name="title" value="Tarea 20" />
+		<property name="startMoment" value="2022/04/24 11:00" />
+		<property name="endMoment" value="2022/04/26 12:00" />
+		<property name="workloadHours" value="10" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 20" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task21" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T021" />
+		<property name="title" value="Tarea 21" />
+		<property name="startMoment" value="2022/05/04 11:00" />
+		<property name="endMoment" value="2022/05/24 12:00" />
+		<property name="workloadHours" value="0" />
+		<property name="workloadFraction" value="20" />
+		<property name="description" value="Esta es la descripción de la tarea 21" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task22" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T022" />
+		<property name="title" value="Tarea 22" />
+		<property name="startMoment" value="2022/05/26 09:30" />
+		<property name="endMoment" value="2022/07/12 22:59" />
+		<property name="workloadHours" value="35" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 22" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task22a" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T022a" />
+		<property name="title" value="Tarea 22a" />
+		<property name="startMoment" value="2022/05/26 09:30" />
+		<property name="endMoment" value="2022/07/11 22:59" />
+		<property name="workloadHours" value="35" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 22a" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task23" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T023" />
+		<property name="title" value="Tarea 23" />
+		<property name="startMoment" value="2022/06/29 13:15" />
+		<property name="endMoment" value="2022/07/12 19:00" />
+		<property name="workloadHours" value="20" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 23" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task23a" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T023a" />
+		<property name="title" value="Tarea 23a" />
+		<property name="startMoment" value="2022/06/29 13:15" />
+		<property name="endMoment" value="2022/07/12 19:00" />
+		<property name="workloadHours" value="20" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 23a" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task24" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T024" />
+		<property name="title" value="Tarea 24" />
+		<property name="startMoment" value="2022/08/05 11:00" />
+		<property name="endMoment" value="2022/08/16 23:00" />
+		<property name="workloadHours" value="5" />
+		<property name="workloadFraction" value="15" />
+		<property name="description" value="Esta es la descripción de la tarea 24" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task24a" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T024a" />
+		<property name="title" value="Tarea 24a" />
+		<property name="startMoment" value="2022/08/05 11:00" />
+		<property name="endMoment" value="2022/08/15 23:00" />
+		<property name="workloadHours" value="5" />
+		<property name="workloadFraction" value="15" />
+		<property name="description" value="Esta es la descripción de la tarea 24a" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task25" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T025" />
+		<property name="title" value="Tarea 25" />
+		<property name="startMoment" value="2022/08/11 08:00" />
+		<property name="endMoment" value="2022/09/11 07:45" />
+		<property name="workloadHours" value="38" />
+		<property name="workloadFraction" value="27" />
+		<property name="description" value="Esta es la descripción de la tarea 25" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task26" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T026" />
+		<property name="title" value="Tarea 26" />
+		<property name="startMoment" value="2022/08/24 11:00" />
+		<property name="endMoment" value="2022/09/01 14:25" />
+		<property name="workloadHours" value="22" />
+		<property name="workloadFraction"><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 26" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="False" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task27" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T027" />
+		<property name="title" value="Tarea 27" />
+		<property name="startMoment" value="2022/11/16 12:00" />
+		<property name="endMoment" value="2022/11/16 21:40" />
+		<property name="workloadHours" value="7" />
+		<property name="workloadFraction" value="35" />
+		<property name="description" value="Esta es la descripción de la tarea 27" />
+		<property name="link"><null/></property>
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>	
+	
+		<!-- Finished Tasks -->
+	
+	<bean id="task28" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T028" />
+		<property name="title" value="Tarea 28" />
+		<property name="startMoment" value="2020/01/05 8:20" />
+		<property name="endMoment" value="2020/02/20 14:50" />
+		<property name="workloadHours" value="4" />
+		<property name="workloadFraction" ><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 28" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task29" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T029" />
+		<property name="title" value="Tarea 29" />
+		<property name="startMoment" value="2020/01/23 8:20" />
+		<property name="endMoment" value="2020/01/24 14:50" />
+		<property name="workloadHours" value="2" />
+		<property name="workloadFraction" ><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 29" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task30" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T030" />
+		<property name="title" value="Tarea 30" />
+		<property name="startMoment" value="2020/04/12 8:20" />
+		<property name="endMoment" value="2020/06/28 14:50" />
+		<property name="workloadHours" value="25" />
+		<property name="workloadFraction" ><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 30" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="task31" class="acme.entities.tasks.Task">
+		<property name="taskId" value="T031" />
+		<property name="title" value="Tarea 31" />
+		<property name="startMoment" value="2020/01/03 8:20" />
+		<property name="endMoment" value="2020/05/04 14:50" />
+		<property name="workloadHours" value="40" />
+		<property name="workloadFraction" ><null/></property>
+		<property name="description" value="Esta es la descripción de la tarea 31" />
+		<property name="link" value="https://www.google.com/" />
+		<property name="isPublic" value="True" />
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<!-- Workplans -->
+	
+	<bean id="workplan01" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 01" />
+		<property name="isPublic" value ="False" />
+		<property name="executionPeriodStart" value="2022/01/11 05:00" />
+		<property name="executionPeriodEnd" value="2022/04/25 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task09"/>
+				<ref bean="task09a"/>
+				<ref bean="task08"/>
+				<ref bean="task08a"/>
+				<ref bean="task04"/>
+				<ref bean="task04a"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="workplan02" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 02" />
+		<property name="isPublic" value ="False" />
+		<property name="executionPeriodStart" value="2022/03/05 05:00" />
+		<property name="executionPeriodEnd" value="2022/07/11 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task04"/>
+				<ref bean="task04a"/>
+				<ref bean="task05"/>
+				<ref bean="task08"/>
+				<ref bean="task10"/>
+				<ref bean="task11"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<bean id="workplan03" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 03" />
+		<property name="isPublic" value ="True" />
+		<property name="executionPeriodStart" value="2022/03/05 05:00" />
+		<property name="executionPeriodEnd" value="2022/11/16 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task06"/>
+				<ref bean="task07"/>
+				<ref bean="task05"/>
+				<ref bean="task08"/>
+				<ref bean="task08a"/>
+				<ref bean="task10"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+		
+	<bean id="workplan04" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 04" />
+		<property name="isPublic" value ="True" />
+		<property name="executionPeriodStart" value="2022/03/05 05:00" />
+		<property name="executionPeriodEnd" value="2022/11/15 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task05"/>
+				<ref bean="task06"/>
+				<ref bean="task07"/>
+				<ref bean="task08"/>
+				<ref bean="task08a"/>
+				<ref bean="task10"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+
+	
+	<bean id="workplan05" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 05" />
+		<property name="isPublic" value ="True" />
+		<property name="executionPeriodStart" value="2022/05/03 05:00" />
+		<property name="executionPeriodEnd" value="2022/11/15 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task03"/>
+				<ref bean="task03a"/>
+				<ref bean="task05"/>
+				<ref bean="task06"/>
+				<ref bean="task07"/>
+				<ref bean="task10"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+		
+	<bean id="workplan06" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 06" />
+		<property name="isPublic" value ="True" />
+		<property name="executionPeriodStart" value="2022/05/03 05:00" />
+		<property name="executionPeriodEnd" value="2022/11/15 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task03"/>
+				<ref bean="task05"/>
+				<ref bean="task06"/>
+				<ref bean="task07"/>
+				<ref bean="task07a"/>
+				<ref bean="task10"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+		
+	<bean id="workplan07" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 07" />
+		<property name="isPublic" value ="True" />
+		<property name="executionPeriodStart" value="2022/03/05 05:00" />
+		<property name="executionPeriodEnd" value="2022/11/15 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task03"/>
+				<ref bean="task05"/>
+				<ref bean="task06"/>
+				<ref bean="task07"/>
+				<ref bean="task08"/>
+				<ref bean="task10"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+		
+	<bean id="workplan08" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 08" />
+		<property name="isPublic" value ="False" />
+		<property name="executionPeriodStart" value="2022/01/08 05:00" />
+		<property name="executionPeriodEnd" value="2022/11/15 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task02"/>
+				<ref bean="task03"/>
+				<ref bean="task04"/>
+				<ref bean="task05"/>
+				<ref bean="task06"/>
+				<ref bean="task07"/>
+				<ref bean="task08"/>
+				<ref bean="task09"/>
+				<ref bean="task10"/>
+				<ref bean="task12"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager01"/>
+		</property>
+	</bean>
+	
+	<!-- Manager 2 Workplans -->
+	<bean id="workplan09" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 09" />
+		<property name="isPublic" value ="False" />
+		<property name="executionPeriodStart" value="2022/04/20 05:00" />
+		<property name="executionPeriodEnd" value="2022/08/17 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task19"/>
+				<ref bean="task22"/>
+				<ref bean="task22a"/>
+				<ref bean="task24"/>
+				<ref bean="task24a"/>
+				<ref bean="task20"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="workplan10" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 10" />
+		<property name="isPublic" value ="False" />
+		<property name="executionPeriodStart" value="2022/03/05 05:00" />
+		<property name="executionPeriodEnd" value="2022/09/17 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task18"/>
+				<ref bean="task18a"/>
+				<ref bean="task19"/>
+				<ref bean="task19a"/>
+				<ref bean="task25"/>
+				<ref bean="task16"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+
+	<bean id="workplan11" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 11" />
+		<property name="isPublic" value ="False" />
+		<property name="executionPeriodStart" value="2022/01/11 05:00" />
+		<property name="executionPeriodEnd" value="2022/11/17 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task17"/>
+				<ref bean="task18"/>
+				<ref bean="task18a"/>
+				<ref bean="task22"/>
+				<ref bean="task22a"/>
+				<ref bean="task27"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+
+	<bean id="workplan12" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 12" />
+		<property name="isPublic" value ="False" />
+		<property name="executionPeriodStart" value="2022/04/23 05:00" />
+		<property name="executionPeriodEnd" value="2022/09/17 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task20"/>
+				<ref bean="task21"/>
+				<ref bean="task23"/>
+				<ref bean="task25"/>
+				<ref bean="task16"/>
+				<ref bean="task23a"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+
+	<bean id="workplan13" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 13" />
+		<property name="isPublic" value ="False" />
+		<property name="executionPeriodStart" value="2022/03/04 05:00" />
+		<property name="executionPeriodEnd" value="2022/09/02 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task24"/>
+				<ref bean="task26"/>
+				<ref bean="task18a"/>
+				<ref bean="task19a"/>
+				<ref bean="task22a"/>
+				<ref bean="task23a"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="workplan14" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 14" />
+		<property name="isPublic" value ="False" />
+		<property name="executionPeriodStart" value="2022/01/11 05:00" />
+		<property name="executionPeriodEnd" value="2022/07/13 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task17"/>
+				<ref bean="task18"/>
+				<ref bean="task19"/>
+				<ref bean="task20"/>
+				<ref bean="task21"/>
+				<ref bean="task22"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+	<bean id="workplan15" class="acme.entities.workplans.Workplan">
+		<property name="title" value="Workplan 15" />
+		<property name="isPublic" value ="True" />
+		<property name="executionPeriodStart" value="2022/01/11 05:00" />
+		<property name="executionPeriodEnd" value="2022/11/17 23:59" />
+		<property name="tasks">
+			<list>
+				<ref bean="task17"/>
+				<ref bean="task16"/>
+				<ref bean="task20"/>
+				<ref bean="task21"/>
+				<ref bean="task25"/>
+				<ref bean="task27"/>
+			</list>
+		</property>
+		<property name="owner">
+			<ref bean="managerManager02"/>
+		</property>
+	</bean>
+	
+</beans>

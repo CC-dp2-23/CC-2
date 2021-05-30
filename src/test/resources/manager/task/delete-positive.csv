@@ -1,0 +1,2 @@
+recordIndex,taskId,title,startMoment,endMoment,workloadHours,workloadFraction,description,link,isPublic
+0,T002,Tarea 2,2022/08/10 11:00,2022/09/10 12:00,100,,Esta es la descripción de la tarea 2,https://www.google.com/,false

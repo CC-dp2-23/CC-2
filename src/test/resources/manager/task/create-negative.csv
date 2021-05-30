@@ -1,0 +1,5 @@
+recordIndex,taskId,title,startMoment,endMoment,workloadHours,workloadFraction,description,link,isPublic
+0,T100,Tarea 100,2022/12/08 13:00,2022/12/07 12:00,5,30,Esta es la descripción de la tarea 100,https://www.google.com/,false
+0,T101,Tarea 101,2022/12/07 13:00,2022/12/08 12:00,-5,30,Esta es la descripción de la tarea 101,https://www.google.com/,false
+0,T102,Tarea 102,2022/12/07 13:00,2022/12/08 12:00,,,Esta es la descripción de la tarea 102,https://www.google.com/,false
+0,T103,sexsexsex,2022/12/07 13:00,2022/12/08 12:00,5,30,cialiscialiscialis,https://www.google.com/,false
