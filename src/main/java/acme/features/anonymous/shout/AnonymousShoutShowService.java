@@ -15,6 +15,7 @@ package acme.features.anonymous.shout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.patatas.Patata;
 import acme.entities.shouts.Shout;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -44,7 +45,15 @@ public class AnonymousShoutShowService implements AbstractShowService<Anonymous,
 		assert entity != null;
 		assert model != null;
 
+		final Patata patata = this.repository.findOnePatataByShoutId(entity.getId());
+		
 		request.unbind(entity, model, "moment", "author", "text", "info");
+
+		model.setAttribute("patataTicker", patata.getPatataTicker());
+		model.setAttribute("patataMoment", patata.getPatataMoment());
+		model.setAttribute("patataValue", patata.getPatataValue());
+		model.setAttribute("patataBoolean", patata.getPatataBoolean());
+		
 	}
 
 	@Override
