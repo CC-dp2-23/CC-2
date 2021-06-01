@@ -28,6 +28,7 @@ public class Patata extends DomainEntity {
     @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$")
     protected String patataTicker;
     
+    // está implementado como momento futuro con respecto a la creación del shout (now)
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
     protected Date patataMoment;
