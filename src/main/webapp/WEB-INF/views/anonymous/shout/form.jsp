@@ -17,10 +17,18 @@
 
 <acme:form>
 	<jstl:if test="${command!='create'}">
-		<acme:form-textbox code="anonymous.shout.form.label.moment" path="moment" readonly="true"/>
+		<acme:form-moment code="anonymous.shout.form.label.moment" path="moment" readonly="true"/>
 		<acme:form-textbox code="anonymous.shout.form.label.author" path="author" readonly="true"/>
 		<acme:form-textarea code="anonymous.shout.form.label.text" path="text" readonly="true"/>
 		<acme:form-url code="anonymous.shout.form.label.info" path="info" readonly="true"/>
+		<br>
+		<br>
+		<h3><acme:message code="anonymous.shout.form.patata"/></h3>
+		<br>
+		<acme:form-textbox code="anonymous.shout.form.label.patataTicker" path="patataTicker"/>
+		<acme:form-moment code="anonymous.shout.form.label.patataMoment" path="patataMoment"/>
+		<acme:form-money code="anonymous.shout.form.label.patataValue" path="patataValue"/>
+		<acme:form-checkbox code="anonymous.shout.form.label.patataBoolean" path="patataBoolean"/>
 	</jstl:if>
 	<jstl:if test="${command=='create' }">
 		<acme:form-textbox code="anonymous.shout.form.label.author" path="author"/>
