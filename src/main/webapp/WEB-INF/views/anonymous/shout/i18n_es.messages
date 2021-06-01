@@ -12,6 +12,8 @@ anonymous.shout.list.label.moment = Fecha
 anonymous.shout.list.label.author = Autor
 anonymous.shout.list.label.text = Texto
 
+anonymous.shout.list.label.patata = Patata
+
 anonymous.shout.form.label.moment = Momento:
 anonymous.shout.form.label.author = Autor:
 anonymous.shout.form.label.text = Texto:

@@ -12,6 +12,8 @@ anonymous.shout.list.label.moment = Moment
 anonymous.shout.list.label.author = Author
 anonymous.shout.list.label.text = Text
 
+anonymous.shout.list.label.patata = Patata
+
 anonymous.shout.form.label.moment = Moment:
 anonymous.shout.form.label.author = Author:
 anonymous.shout.form.label.text = Text:
@@ -22,3 +24,5 @@ anonymous.shout.form.button.return = Return
 
 anonymous.shout.form.error.spam.is-spam = This shout is spam, and therefore will not be allowed to be published
 anonymous.shout.form.error.spam.has-errors = An error has occurred, please refresh and try again
+
+
