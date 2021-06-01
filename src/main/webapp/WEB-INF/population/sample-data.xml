@@ -26,48 +26,134 @@
 		<property name="author" value="Shirou Emiya" />
 		<property name="text" value="People die if they're killed..." />
 		<property name="info"><null/></property>
+		<property name="patata">
+			<ref bean="patata1"/>
+		</property>
 	</bean>
 	
 	<bean id="shout2" class="acme.entities.shouts.Shout">
-		<property name="moment" value="2021/05/19 1:00" />
+		<property name="moment" value="2021/05/20 1:00" />
 		<property name="author" value="Yui Hirasawa" />
 		<property name="text" value="Fun things are fun." />
 		<property name="info" value="https://en.wikipedia.org/wiki/Fun" />	
+		<property name="patata">
+			<ref bean="patata2"/>
+		</property>
 	</bean>
 	
 	<bean id="shout3" class="acme.entities.shouts.Shout">
-		<property name="moment" value="2021/05/19 11:05" />
+		<property name="moment" value="2021/05/21 11:05" />
 		<property name="author" value="Tsubasa Hanekawa" />
 		<property name="text" value="I just know what I know." />
-	<property name="info"><null/></property>
+		<property name="info"><null/></property>
+		<property name="patata">
+			<ref bean="patata3"/>
+		</property>
 	</bean>
 	
 	<bean id="shout4" class="acme.entities.shouts.Shout">
-		<property name="moment" value="2021/05/19 10:00" />
+		<property name="moment" value="2021/05/22 10:00" />
 		<property name="author" value="Hibiki Tachibana" />
 		<property name="text" value="Then I'll return alive; even if it kills me!" />
 		<property name="info" value="https://www.symphogear-gx.com/" />	
+		<property name="patata">
+			<ref bean="patata4"/>
+		</property>
 	</bean>
 	
 	<bean id="shout5" class="acme.entities.shouts.Shout">
-		<property name="moment" value="2021/05/19 11:30" />
+		<property name="moment" value="2021/05/23 11:30" />
 		<property name="author" value="Hatsume Aoba" />
 		<property name="text" value="Being all alone... is lonely." />
 		<property name="info"><null/></property>
+		<property name="patata">
+			<ref bean="patata5"/>
+		</property>
 	</bean>
 	
 	<bean id="shout6" class="acme.entities.shouts.Shout">
-		<property name="moment" value="2021/05/19 09:00" />
+		<property name="moment" value="2021/05/24 09:00" />
 		<property name="author" value="Cú Chulainn" />
 		<property name="text" value="So you dodged my undodgeable blow." />
 		<property name="info" value="https://www.google.com/" />	
+		<property name="patata">
+			<ref bean="patata6"/>
+		</property>
 	</bean>
 	
 	<bean id="shout7" class="acme.entities.shouts.Shout">
-		<property name="moment" value="2021/05/19 10:05" />
+		<property name="moment" value="2021/05/25 10:05" />
 		<property name="author" value="Megumin" />
 		<property name="text" value="Ex-PLOSION~!" />
 		<property name="info" value="http://konosuba.com/" />
+		<property name="patata">
+			<ref bean="patata7"/>
+		</property>
+	</bean>
+
+	<!-- Patatas -->
+	
+	<bean id="patata1" class="acme.entities.patatas.Patata">
+		<property name="patataTicker" value="2021-05-19" />
+		<property name="patataMoment" value="2021/05/20 11:00" />
+		<property name="patataValue">
+    		<ref bean="money01"/>
+    	</property>
+		<property name="patataBoolean" value="True" />
+	</bean>
+	
+	<bean id="patata2" class="acme.entities.patatas.Patata">
+		<property name="patataTicker" value="2021-05-20" />
+		<property name="patataMoment" value="2021/05/21 1:00" />
+		<property name="patataValue">
+    		<ref bean="money02"/>
+    	</property>
+		<property name="patataBoolean" value="True" />
+	</bean>
+	
+	<bean id="patata3" class="acme.entities.patatas.Patata">
+		<property name="patataTicker" value="2021-05-21" />
+		<property name="patataMoment" value="2021/05/22 11:05" />
+		<property name="patataValue">
+    		<ref bean="money03"/>
+    	</property>
+		<property name="patataBoolean" value="True" />
+	</bean>
+	
+	<bean id="patata4" class="acme.entities.patatas.Patata">
+		<property name="patataTicker" value="2021-05-22" />
+		<property name="patataMoment" value="2021/05/23 10:00" />		
+		<property name="patataValue">
+    		<ref bean="money04"/>
+    	</property>
+		<property name="patataBoolean" value="True" />
+	</bean>
+	
+	<bean id="patata5" class="acme.entities.patatas.Patata">
+		<property name="patataTicker" value="2021-05-23" />
+		<property name="patataMoment" value="2021/05/24 11:30" />
+		<property name="patataValue">
+    		<ref bean="money05"/>
+    	</property>
+		<property name="patataBoolean" value="True" />
+	</bean>
+	
+	<bean id="patata6" class="acme.entities.patatas.Patata">
+		<property name="patataTicker" value="2021-05-24" />
+		<property name="patataMoment" value="2021/05/25 09:00" />
+		<property name="patataValue">
+    		<ref bean="money06"/>
+    	</property>
+		<property name="patataBoolean" value="False" />	
+	</bean>
+	
+	<bean id="patata7" class="acme.entities.patatas.Patata">
+		<property name="patataTicker" value="2021-05-25" />
+		<property name="patataMoment" value="2021/05/26 10:05" />
+		<property name="patataValue">
+    		<ref bean="money07"/>
+    	</property>
+		<property name="patataBoolean" value="False" />	
 	</bean>
 	
 	<!-- Managers -->
@@ -1057,6 +1143,43 @@
 		<property name="owner">
 			<ref bean="managerManager02"/>
 		</property>
+	</bean>
+	
+	<!-- Money -->
+	
+	<bean id="money01" class="acme.framework.datatypes.Money" >
+		<property name="amount" value="10"/>
+		<property name="currency" value="€"/>
+	</bean>
+	  
+	<bean id="money02" class="acme.framework.datatypes.Money" >
+		<property name="amount" value="20"/>
+		<property name="currency" value="€"/>
+	</bean>  
+	    
+	<bean id="money03" class="acme.framework.datatypes.Money" >
+		<property name="amount" value="30"/>
+		<property name="currency" value="€"/>
+	</bean>
+	
+	<bean id="money04" class="acme.framework.datatypes.Money" >
+		<property name="amount" value="40"/>
+		<property name="currency" value="€"/>
+	</bean>
+	  
+	<bean id="money05" class="acme.framework.datatypes.Money" >
+		<property name="amount" value="50"/>
+		<property name="currency" value="€"/>
+	</bean>
+	  
+	<bean id="money06" class="acme.framework.datatypes.Money" >
+		<property name="amount" value="60"/>
+		<property name="currency" value="€"/>
+	</bean>
+	
+	<bean id="money07" class="acme.framework.datatypes.Money" >
+		<property name="amount" value="70"/>
+		<property name="currency" value="€"/>
 	</bean>
 	
 </beans>

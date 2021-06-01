@@ -12,10 +12,18 @@ anonymous.shout.list.label.moment = Fecha
 anonymous.shout.list.label.author = Autor
 anonymous.shout.list.label.text = Texto
 
+anonymous.shout.list.label.patata = Patata
+
 anonymous.shout.form.label.moment = Momento:
 anonymous.shout.form.label.author = Autor:
 anonymous.shout.form.label.text = Texto:
 anonymous.shout.form.label.info = Info:
+
+anonymous.shout.form.patata = La patata de este grito:
+anonymous.shout.form.label.patataTicker = Patata ticker:
+anonymous.shout.form.label.patataMoment = Patata moment:
+anonymous.shout.form.label.patataValue = Patata value:
+anonymous.shout.form.label.patataBoolean = Patata boolean
 
 anonymous.shout.form.button.create = ¡Grita!
 anonymous.shout.form.button.return = Volver
