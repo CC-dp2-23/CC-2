@@ -205,14 +205,18 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 							patataValue = patataValue.replace(",", ".");
 						}
 						// "^\\-?\\d{0,10}(\\.\\d{1,2})?$"
-						if(patataValue.matches("^\\-?\\d(\\.\\d)?$")) {
-							final Double value = Double.valueOf(patataValue);
-							errors.state(request, value>=0, "patataValue", "anonymous.shout.form.error.patata-value-negativo"); // Must be greater than or equal to {0}
-							if (value>=0 && !patataValue.matches("^\\d{0,10}(\\.\\d{1,2})?$")) {
-								errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-rangue"); // Must have {0} digits and {1} decimals
+						if(!patataValue.equals("") && !patataValue.equals("-")) {
+							if(patataValue.matches("^\\-?\\d*(\\.\\d{1,})?$")) {
+								final Double value = Double.valueOf(patataValue);
+								errors.state(request, value>=0, "patataValue", "anonymous.shout.form.error.patata-value-negativo"); // Must be greater than or equal to {0}
+								if (value>=0 && !patataValue.matches("^\\d{0,10}(\\.\\d{1,2})?$")) {
+									errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-rangue"); // Must have {0} digits and {1} decimals
+								}
+							} else {
+								errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed");// Invalid value. Must not be null
 							}
 						} else {
-							errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed");// Invalid value. Must not be null
+							errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed");
 						}
 					} else {
 						errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed"); // Invalid value. Must not be null
