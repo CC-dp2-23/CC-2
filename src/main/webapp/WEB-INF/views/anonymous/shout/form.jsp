@@ -25,15 +25,24 @@
 		<br>
 		<h3><acme:message code="anonymous.shout.form.patata"/></h3>
 		<br>
-		<acme:form-textbox code="anonymous.shout.form.label.patataTicker" path="patataTicker"/>
-		<acme:form-moment code="anonymous.shout.form.label.patataMoment" path="patataMoment"/>
-		<acme:form-money code="anonymous.shout.form.label.patataValue" path="patataValue"/>
-		<acme:form-checkbox code="anonymous.shout.form.label.patataBoolean" path="patataBoolean"/>
+		<acme:form-textbox code="anonymous.shout.form.label.patataTicker" path="patata.patataTicker" readonly="true"/>
+		<acme:form-moment code="anonymous.shout.form.label.patataMoment" path="patata.patataMoment" readonly="true"/>
+		<acme:form-money code="anonymous.shout.form.label.patataValue" path="patata.patataValue" readonly="true"/>
+		<acme:form-checkbox code="anonymous.shout.form.label.patataBoolean" path="patata.patataBoolean" readonly="true"/>
 	</jstl:if>
 	<jstl:if test="${command=='create' }">
 		<acme:form-textbox code="anonymous.shout.form.label.author" path="author"/>
 		<acme:form-textarea code="anonymous.shout.form.label.text" path="text"/>
 		<acme:form-url code="anonymous.shout.form.label.info" path="info"/>
+		<br>
+		<br>
+		<h3><acme:message code="anonymous.shout.form.patata"/></h3>
+		<br>
+		<acme:form-textbox code="anonymous.shout.form.label.patataTicker" path="patata.patataTicker"/>
+		<acme:form-moment code="anonymous.shout.form.label.patataMoment" path="patata.patataMoment"/>
+		<acme:form-money code="anonymous.shout.form.label.patataValue" path="patata.patataValue"/>
+		<acme:form-checkbox code="anonymous.shout.form.label.patataBoolean" path="patata.patataBoolean"/>
+		
 	</jstl:if>
 	<acme:form-submit test="${command=='create'}" code="anonymous.shout.form.button.create" action="/anonymous/shout/create"/>
 	<acme:form-return code="anonymous.shout.form.button.return"/>

@@ -34,4 +34,7 @@ public interface AnonymousShoutRepository extends AbstractRepository {
 	
 	@Query("select s.patata from Shout s where s.id = :shoutId")
 	Patata findOnePatataByShoutId(@Param("shoutId") int id);
+
+	@Query("select count(a)>0 from Patata a where a.patataTicker = :ticker")
+	boolean isPatataTickerExist(@Param("ticker") String ticker);
 }

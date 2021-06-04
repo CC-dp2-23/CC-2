@@ -12,15 +12,18 @@
 
 package acme.features.anonymous.shout;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.patatas.Patata;
 import acme.entities.shouts.Shout;
 import acme.framework.components.Errors;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.entities.Anonymous;
 import acme.framework.services.AbstractCreateService;
 import acme.utilities.SpamModule;
@@ -63,7 +66,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "author", "text", "info");
+		request.unbind(entity, model, "author", "text", "info", "patata.patataTicker","patata.patataMoment","patata.patataValue","patata.patataBoolean");
 	}
 
 	@Override
@@ -94,6 +97,53 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		} else if (spamResult.isSpam()){
 			errors.state(request, false, "info", "anonymous.shout.form.error.spam.is-spam");
 		}
+		
+		if(!errors.hasErrors("patata.patataTicker")) {
+			final String patataTicker = (String) request.getModel().getAttribute("patata.patataTicker");
+
+			if(!patataTicker.matches("^\\d{4}-\\d{2}-\\d{2}$")) { // "^"+author+"-\\d{4}-\\d{2}-\\d{2}$"
+				errors.state(request, false, "patata.patataTicker"	, "anonymous.shout.form.error.patata-ticker-pattern");
+			} else {
+			/*  authorYYYYMMDD 
+				
+				String dd = patataTicker.substring(patataTicker.length()-2, patataTicker.length()); //DD
+				String mm = patataTicker.substring(patataTicker.length()-4, patataTicker.length()-2); //MM
+				String yyyy = patataTicker.substring(patataTicker.length()-8, patataTicker.length()-4); //YYYY
+				String author = patataTicker.substring(0, patataTicker.length()-8); //author
+			*/
+				final String[] aux = patataTicker.split("-"); 
+				
+				final Date now = new Date(System.currentTimeMillis()-1);
+
+				final Calendar calendar = Calendar.getInstance();
+				calendar.setTime(now);
+				final Integer year = calendar.get(Calendar.YEAR);
+				final Integer month = calendar.get(Calendar.MONTH)+1;
+				final Integer day = calendar.get(Calendar.DAY_OF_MONTH);
+				
+				final boolean errorDate = year.equals(Integer.parseInt(aux[0]))&&
+								month.equals(Integer.parseInt(aux[1]))&&
+								day.equals(Integer.parseInt(aux[2]));
+				
+				errors.state(request, errorDate, "patata.patataTicker", "anonymous.shout.form.error.patata-ticker-pattern");
+				
+				if(this.repository.isPatataTickerExist(patataTicker)) {
+					errors.state(request, false, "patata.patataTicker", "anonymous.shout.form.error.patata-ticker-unique");
+				}
+			}
+			
+			if(!errors.hasErrors("patata.patataMoment")) {
+				final Date now = new Date(System.currentTimeMillis()-1);
+				final Date fecha = request.getModel().getDate("patata.patataMoment");
+				errors.state(request, fecha.after(now), "patata.patataMoment", "anonymous.shout.form.error.patata-moment");
+			}
+			
+			if(!errors.hasErrors("patata.patataValue")) {
+				final Money patataValue = request.getModel().getAttribute("patata.patataValue", Money.class);
+				final boolean validCurrency = patataValue.getCurrency().equalsIgnoreCase("EUR")||patataValue.getCurrency().equalsIgnoreCase("GBP");
+				errors.state(request, validCurrency, "patata.patataValue", "anonymous.shout.form.error.patata-value-currency");
+			}
+		}
 	}
 	
 	@Override
@@ -105,7 +155,24 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		
 		moment = new Date(System.currentTimeMillis()-1);
 		entity.setMoment(moment);
+		
+		
+		final String patataTicker = (String) request.getModel().getAttribute("patata.patataTicker");
+		final Date patataMoment = request.getModel().getDate("patata.patataMoment"); 
+		final Boolean patataBoolean = request.getModel().getBoolean("patata.patataBoolean");
+		final Money patataValue = request.getModel().getAttribute("patata.patataValue", Money.class);
+		
+		final Patata patata = new Patata();
+		
+		patata.setPatataTicker(patataTicker);
+		patata.setPatataMoment(patataMoment);
+		patata.setPatataValue(patataValue);
+		patata.setPatataBoolean(patataBoolean);
+		
+		entity.setPatata(patata);
+		this.repository.save(patata);
 		this.repository.save(entity);
+		
 	}
 
 }
