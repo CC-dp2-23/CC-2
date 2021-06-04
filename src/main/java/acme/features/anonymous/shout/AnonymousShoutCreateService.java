@@ -110,10 +110,10 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 			if(patataTicker.equals("")) { 
 				errors.state(request, false, "patataTicker", "anonymous.shout.form.error.patata-ticker-vacio");
 			} else {
-				if(!patataTicker.matches("^\\d{4}-\\d{2}-\\d{2}$")) {
-					errors.state(request, false, "patataTicker", "anonymous.shout.form.error.patata-ticker-pattern");
+				if(!patataTicker.matches("^\\d{4}-\\d{2}-\\d{2}$")) { // "^"+author+"-\\d{4}-\\d{2}-\\d{2}$"
+					errors.state(request, false, "patataTicker"	, "anonymous.shout.form.error.patata-ticker-pattern");
 				} else {
-					final String[] aux = patataTicker.split("-");
+					final String[] aux = patataTicker.split("-"); //YYYYMMDD
 					final Date now = new Date(System.currentTimeMillis()-1);
 
 					final Calendar calendar = Calendar.getInstance();
@@ -126,7 +126,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 									month.equals(Integer.parseInt(aux[1]))&&
 									day.equals(Integer.parseInt(aux[2]));
 					
-					errors.state(request, errorDate, "patataTicker", "anonymous.shout.form.error.patata-ticker-date");
+					errors.state(request, errorDate, "patataTicker", "anonymous.shout.form.error.patata-ticker-pattern");
 					
 					if(this.repository.isPatataTickerExist(patataTicker)) {
 						errors.state(request, false, "patataTicker", "anonymous.shout.form.error.patata-ticker-unique");
@@ -141,15 +141,15 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 			if(!fecha.equals("")) {
 				final String lang = request.getLocale().getLanguage();
 				if(lang.equals("en")) {
-					if(!fecha.matches("^\\d{4}\\/\\d{2}\\/\\d{2}\\s+\\d{2}\\:\\d{2}$")) {
-						errors.state(request, false, "patataMoment", "anonymous.shout.form.error.patata-moment-malformed-en");
+					if(!fecha.matches("^\\s*\\d{4}\\/\\d{2}\\/\\d{2}\\s+\\d{2}\\:\\d{2}$")) {
+						errors.state(request, false, "patataMoment", "anonymous.shout.form.error.patata-moment-malformed");
 					} else {
 						final Date patataMoment = request.getModel().getDate("patataMoment");
 						errors.state(request, patataMoment.after(now), "patataMoment", "anonymous.shout.form.error.patata-moment");
 					}
 				} else if (lang.equals("es")) {
-					if(!fecha.matches("^\\d{2}\\/\\d{2}\\/\\d{4}\\s+\\d{2}\\:\\d{2}$")) {
-						errors.state(request, false, "patataMoment", "anonymous.shout.form.error.patata-moment-malformed-es");
+					if(!fecha.matches("^\\s*\\d{2}\\/\\d{2}\\/\\d{4}\\s+\\d{2}\\:\\d{2}$")) {
+						errors.state(request, false, "patataMoment", "anonymous.shout.form.error.patata-moment-malformed");
 					} else {
 						final Date patataMoment = request.getModel().getDate("patataMoment");
 						errors.state(request, patataMoment.after(now), "patataMoment", "anonymous.shout.form.error.patata-moment");
@@ -165,10 +165,6 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 			String patataValue = ((String) request.getModel().getAttribute("patataValue")).toLowerCase();
 			
 			if(!patataValue.equals("")) {
-//				if(!patataValue.matches("^(("+currencies.get(0)+"\\s*\\d{0,10}(\\.\\d{1,2})?)|(\\d{0,10}(\\.\\d{1,2})?\\s*"+currencies.get(0)+")|"+
-//										"("+currencies.get(1)+"\\s*\\d{0,10}(\\.\\d{1,2})?)|(\\d{0,10}(\\.\\d{1,2})?\\s*"+currencies.get(1)+"))$")) {
-//					errors.state(request, false, "patataMoment", "anonymous.shout.form.error.patata-value-malformed");
-//				}
 				if(!(patataValue.endsWith(" ") || patataValue.startsWith(" "))) {
 					
 					final List<String> currencies = Arrays.asList("eur","gbp");
@@ -179,7 +175,7 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 						boolean repeatedCurrency = false;
 						final Pattern pattern = Pattern.compile(s);
 						final Matcher matcher = pattern.matcher(patataValue);
-						if(matcher.find()) {
+						if(matcher.find()) { 
 							if(matcher.find()) {
 								repeatedCurrency = true;
 								errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-currency"); // The currencies available eur or gbd
@@ -199,33 +195,44 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 						patataValue = patataValue.replace(currency,"").trim();
 						
 						if(lang.equals("en")) {
+							// 120,0.5
+							final long countComma = patataValue.chars().filter(ch -> ch == ',').count();
+							final long countPoint = patataValue.chars().filter(ch -> ch == '.').count();
+							if(countComma > 1 || countPoint > 1) {
+								errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed");
+							}
+							// 1,900,000,000.44 -- 1,900,000,000
+							if (!patataValue.contains(".")) {
+								
+							}
+							
 							patataValue = patataValue.replace(",","");
 						} else if(lang.equals("es")) {
 							patataValue = patataValue.replace(".", "");
 							patataValue = patataValue.replace(",", ".");
 						}
-						// "^\\-?\\d{0,10}(\\.\\d{1,2})?$"
+						
 						if(!patataValue.equals("") && !patataValue.equals("-")) {
-							if(patataValue.matches("^\\-?\\d*(\\.\\d{1,})?$")) {
+							if(patataValue.matches("^\\-?\\d*(\\.\\d{1,})?$")) { 
 								final Double value = Double.valueOf(patataValue);
-								errors.state(request, value>=0, "patataValue", "anonymous.shout.form.error.patata-value-negativo"); // Must be greater than or equal to {0}
+								errors.state(request, value>=0, "patataValue", "anonymous.shout.form.error.patata-value-negativo"); 
 								if (value>=0 && !patataValue.matches("^\\d{0,10}(\\.\\d{1,2})?$")) {
-									errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-rangue"); // Must have {0} digits and {1} decimals
+									errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-range"); 
 								}
 							} else {
-								errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed");// Invalid value. Must not be null
+								errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed");
 							}
 						} else {
 							errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed");
 						}
 					} else {
-						errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed"); // Invalid value. Must not be null
+						errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed"); 
 					}
 				} else {
 					errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-malformed");
 				}
 			} else {
-				errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-vacio"); // Must not be null
+				errors.state(request, false, "patataValue", "anonymous.shout.form.error.patata-value-vacio"); 
 			}
 		}
 	}
@@ -233,24 +240,31 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 	@Override
 	public void create(final Request<Shout> request, final Shout entity) {
 		assert request != null;
-		assert entity != null; // "afsdf    asdf"
+		assert entity != null; 
 		
+		final String lang = request.getLocale().getLanguage();
 		final String patataTicker = (String) request.getModel().getAttribute("patataTicker");
-		final String patataMomentString = ((String) request.getModel().getAttribute("patataMoment")).replaceAll("\\s+", " "); // 2021/06/22 11:05
-		final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		final String patataMomentString = ((String) request.getModel().getAttribute("patataMoment")).trim().replaceAll("\\s+", " "); 
+		SimpleDateFormat format = new SimpleDateFormat();
+		if(lang.equals("en")) {
+			format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		} else if (lang.equals("es")) {
+			format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		}
+		
 		Date patataMoment = new Date();
 		try {
 			patataMoment = format.parse(patataMomentString);
 		} catch (final ParseException e) {
 		}
 		
-		final List<String> currencies = Arrays.asList("eur","gbp"); // EUR1 o EUR 2 asdfdfgd
-		String patataValue = (String) request.getModel().getAttribute("patataValue");
+		final List<String> currencies = Arrays.asList("eur","gbp"); 
+		String patataValue = ((String) request.getModel().getAttribute("patataValue")).toLowerCase();
 		final Money money = new Money();
 		for(final String s : currencies) {
 			if(patataValue.contains(s)){
-				money.setCurrency(s);
-				patataValue = patataValue.replace(s,"").trim();
+				money.setCurrency(s.toUpperCase());
+				patataValue = patataValue.replace(s.toLowerCase(),"").trim();
 				money.setAmount(Double.valueOf(patataValue));
 			}
 		}

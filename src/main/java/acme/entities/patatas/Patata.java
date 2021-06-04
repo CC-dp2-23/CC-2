@@ -25,7 +25,7 @@ public class Patata extends DomainEntity {
     
     @NotBlank
     @Column(unique = true)
-    @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$")
+    @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$") // esto fuera si el pattern cambia
     protected String patataTicker;
     
     // está implementado como momento futuro con respecto a la creación del shout (now)
