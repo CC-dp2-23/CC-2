@@ -31,4 +31,11 @@ anonymous.shout.form.button.return = Return
 anonymous.shout.form.error.spam.is-spam = This shout is spam, and therefore will not be allowed to be published
 anonymous.shout.form.error.spam.has-errors = An error has occurred, please refresh and try again
 
+anonymous.shout.form.error.patata-ticker-pattern = Must match pattern: yyyy-mm-dd (y's current year, m's current month, d's current day)
+anonymous.shout.form.error.patata-ticker-unique = This ticker already exists
+
+anonymous.shout.form.error.patata-moment = The patataMoment must be future when the shout is created
+
+anonymous.shout.form.error.patata-value-currency = The currencies available are EUR or GBP
+
 

@@ -30,3 +30,10 @@ anonymous.shout.form.button.return = Volver
 
 anonymous.shout.form.error.spam.is-spam = Este grito es spam, por lo que no se puede publicar
 anonymous.shout.form.error.spam.has-errors = Ha ocurrido un error, por favor refresque e inténtelo de nuevo
+
+anonymous.shout.form.error.patata-ticker-pattern = Debe encajar en el patrón: yyyy-mm-dd (las y's el año actual, las m's el mes actual, las d's el día actual)
+anonymous.shout.form.error.patata-ticker-unique = Este ticker ya existe
+
+anonymous.shout.form.error.patata-moment = El patataMoment debe ser futuro respecto a la creación del grito
+
+anonymous.shout.form.error.patata-value-currency = Las divisas disponibles son EUR o GBP

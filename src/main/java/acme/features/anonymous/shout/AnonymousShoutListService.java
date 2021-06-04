@@ -20,7 +20,6 @@ import java.util.GregorianCalendar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.patatas.Patata;
 import acme.entities.shouts.Shout;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -51,11 +50,9 @@ public class AnonymousShoutListService implements AbstractListService<Anonymous,
 		assert entity != null;
 		assert model != null;
 		
-		final Patata patata = this.repository.findOnePatataByShoutId(entity.getId());
 
-		request.unbind(entity, model, "author", "text", "moment");
+		request.unbind(entity, model, "author", "text", "moment", "patata.patataTicker");
 		
-		model.setAttribute("patata", patata.getPatataTicker());
 		
 	}
 

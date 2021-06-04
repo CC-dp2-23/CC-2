@@ -9,7 +9,6 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import acme.framework.datatypes.Money;
 import acme.framework.entities.DomainEntity;
@@ -25,7 +24,6 @@ public class Patata extends DomainEntity {
     
     @NotBlank
     @Column(unique = true)
-    @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$")
     protected String patataTicker;
     
     // está implementado como momento futuro con respecto a la creación del shout (now)
