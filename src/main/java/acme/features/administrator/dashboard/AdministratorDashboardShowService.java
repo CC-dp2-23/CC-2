@@ -31,7 +31,55 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert request != null;
 		assert entity != null;
 		assert model != null;
-
+		
+		Double ratioOfFlaggedPatata = 0.0;
+		if(this.repository.ratioOfFlaggedPatata() != null) {
+			ratioOfFlaggedPatata = this.repository.ratioOfFlaggedPatata();
+		}
+		entity.setRatioOfFlaggedPatata(ratioOfFlaggedPatata);
+		
+		Double ratioOfPatataWithXXX = 0.0;
+		if(this.repository.ratioOfPatataWithXXX() != null) {
+			ratioOfPatataWithXXX = this.repository.ratioOfPatataWithXXX();
+		}
+		entity.setRatioOfPatataWithXXX(ratioOfPatataWithXXX);
+		
+		
+		final List<Object[]> patataValueStats = new ArrayList<Object[]>(this.repository.patataValueStats());
+		
+		double avgPatataValueByEur = 0.0;
+		double avgPatataValueByGbp = 0.0;
+		double stddevPatataValueByEur = 0.0;
+		double stddevPatataValueByGbp = 0.0;
+		
+		if(!patataValueStats.isEmpty()) {
+			if(patataValueStats.get(0)[0]!=null) {
+				if(((String) patataValueStats.get(0)[2]).equals("EUR")) {
+					avgPatataValueByEur = (double) patataValueStats.get(0)[0];
+					stddevPatataValueByEur = (double) patataValueStats.get(0)[1];
+				} else {
+					avgPatataValueByGbp = (double) patataValueStats.get(0)[0];
+					stddevPatataValueByGbp = (double) patataValueStats.get(0)[1];
+				}
+			}
+			if(patataValueStats.get(1)[0]!=null) {
+				if(((String) patataValueStats.get(1)[2]).equals("EUR")) {
+					avgPatataValueByEur = (double) patataValueStats.get(1)[0];
+					stddevPatataValueByEur = (double) patataValueStats.get(1)[1];
+				} else {
+					avgPatataValueByGbp = (double) patataValueStats.get(1)[0];
+					stddevPatataValueByGbp = (double) patataValueStats.get(1)[1];
+				}
+			}
+			entity.setAvgPatataValueByEur(avgPatataValueByEur);
+			entity.setAvgPatataValueByGbp(avgPatataValueByGbp);
+			entity.setStddevPatataValueByEur(stddevPatataValueByEur);
+			entity.setStddevPatataValueByGbp(stddevPatataValueByGbp);
+		}
+		
+		
+	
+		
 		final int numberOfPrivateTasks = this.repository.numberOfPrivateTasks();
 		final int numberOfPublicTasks = this.repository.numberOfPublicTasks();
 		final int numberOfFinishedTasks = this.repository.numberOfFinishedTasks();
@@ -172,7 +220,14 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		entity.setNumberOfPublishedWorkPlans(numberOfPublishedWorkPlans);
 		entity.setNumberOfUnpublishedWorkPlans(numberOfUnpublishedWorkPlans);
 		
-		request.unbind(entity, model, "numberOfPrivateTasks", "numberOfPublicTasks", "numberOfFinishedTasks", "numberOfUnfinishedTasks",
+		request.unbind(entity, model, 
+			"ratioOfFlaggedPatata",
+			"ratioOfPatataWithXXX",
+			"avgPatataValueByEur",
+			"avgPatataValueByGbp",
+			"stddevPatataValueByEur",
+			"stddevPatataValueByGbp",
+			"numberOfPrivateTasks", "numberOfPublicTasks", "numberOfFinishedTasks", "numberOfUnfinishedTasks",
 			"minimumTaskPeriods", "maximumTaskPeriods", "avgTaskPeriods", "stddevTaskPeriods",
 			"minimumTaskWorkloads", "maximumTaskWorkloads", "avgTaskWorkloads", "stddevTaskWorkloads",
 			"numberOfPrivateWorkPlans", "numberOfPublicWorkPlans", "numberOfFinishedWorkPlans", "numberOfUnfinishedWorkPlans",

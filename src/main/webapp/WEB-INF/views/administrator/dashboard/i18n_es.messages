@@ -1,5 +1,12 @@
 administrator.dashboard.form.title 									=	Panel de indicadores
 
+administrator.dashboard.form.patata.ratio-patata-boolean			=	Ratio de gritos cuya Patata fue marcada como patataBoolean
+administrator.dashboard.form.patata.ratio-patata-XXX				=	Ratio de gritos cuya Patata tiene XXX
+administrator.dashboard.form.patata.patata-value-avg-eur			=	Media del patataValue para la divisa EUR
+administrator.dashboard.form.patata.patata-value-avg-gbp			=   Media del patataValue para la divisa GBP
+administrator.dashboard.form.patata.patata-value-stddev-eur			=   Desviación estándar del patataValue para la divisa EUR
+administrator.dashboard.form.patata.patata-value-stddev-gbp			=   Desviación estándar del patataValue para la divisa GBP
+
 administrator.dashboard.form.tasks.private							=   Número de tareas privadas
 administrator.dashboard.form.tasks.public							=	Número de tareas públicas
 

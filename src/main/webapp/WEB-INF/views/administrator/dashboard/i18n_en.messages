@@ -1,5 +1,12 @@
 administrator.dashboard.form.title 									=	Dashboard
 
+administrator.dashboard.form.patata.ratio-patata-boolean			=	Ratio of shouts whose Patata were flagged as patataBoolean
+administrator.dashboard.form.patata.ratio-patata-XXX				=	Ratio of shouts whose Patata have XXX
+administrator.dashboard.form.patata.patata-value-avg-eur			=	Average of the patataValue for EUR currency	
+administrator.dashboard.form.patata.patata-value-avg-gbp			=   Average of the patataValue for GBP currency
+administrator.dashboard.form.patata.patata-value-stddev-eur			=   Standard deviation of the patataValue for EUR currency
+administrator.dashboard.form.patata.patata-value-stddev-gbp			=   Standard deviation of the patataValue for GBP currency
+
 administrator.dashboard.form.tasks.private							=   Number of private tasks
 administrator.dashboard.form.tasks.public							=	Number of public tasks
 

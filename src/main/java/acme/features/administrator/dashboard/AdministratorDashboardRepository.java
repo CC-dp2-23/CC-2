@@ -10,6 +10,17 @@ import acme.framework.repositories.AbstractRepository;
 
 @Repository
 public interface AdministratorDashboardRepository extends AbstractRepository {
+	
+	@Query("select 1.0*sum(case when s.patata.patataBoolean = true then 1 else 0 end)/count(s) from Shout s")
+	Double ratioOfFlaggedPatata();
+	
+	// select count(s) from Shout s where s.patata.patataMoment <= CURRENT_TIMESTAMP
+	@Query("select 1.0*sum(case when s.patata.patataMoment <> null then 1 else 0 end)/count(s) from Shout s")
+	Double ratioOfPatataWithXXX();
+	
+	@Query("select avg(s.patata.patataValue.amount), stddev(s.patata.patataValue.amount), s.patata.patataValue.currency from Shout s group by s.patata.patataValue.currency")
+	Collection<Object[]> patataValueStats();
+	
 
 	@Query("select count(t) from Task t where t.isPublic = false")
 	int numberOfPrivateTasks();
