@@ -1,4 +1,7 @@
-recordIndex,author,text,info
-0,,,
-0,nigeriasexcialis,nigeriasexcialis,
-0,TheRock,I am a rock!,asdf
+recordIndex,author,text,info,patataTicker,patataMoment,patataValue,patataBoolean
+0,,,,,,,false
+1,nigeriasexcialis,nigeriasexcialis,,,2022/06/22 11:05,EUR 5.69,true
+2,TheRock,I am a rock!,asdf,,2022/06/22 11:05,EUR 5.69,false
+3,test01author,test 01 text,,2021-05-25,2022/06/22 11:05,EUR 5.69,true
+4,test02author,test 02 text,,,2020/06/22 11:05,EUR 5.69,false
+5,test03author,test 03 text,,,2022/06/22 11:05,a 5.69,true

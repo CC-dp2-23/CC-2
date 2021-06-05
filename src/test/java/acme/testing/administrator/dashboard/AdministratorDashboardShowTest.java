@@ -18,7 +18,8 @@ public class AdministratorDashboardShowTest extends AcmePlannerTest {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/administrator/dashboard/show-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
-	public void showPositive(final String numberOfPrivateTasks, final String numberOfPublicTasks, 
+	public void showPositive(final String ratioOfFlaggedPatata, final String ratioOfPatataWithXXX, final String avgPatataValueByEur, final String avgPatataValueByGbp, 
+		final String stddevPatataValueByEur, final String stddevPatataValueByGbp, final String numberOfPrivateTasks, final String numberOfPublicTasks, 
 		final String numberOfFinishedTasks, final String numberOfUnfinishedTasks, final String minTaskPeriodsDays, 
 		final String maxTaskPeriodsDays, final String avgTaskPeriodsDays, final String stddevTaskPeriodsDays, 
 		final String minTaskWorkloadsHoursMinutes, final String maxTaskWorkloadsHoursMinutes, 
@@ -30,6 +31,13 @@ public class AdministratorDashboardShowTest extends AcmePlannerTest {
 		super.signIn("administrator", "administrator");
 		
 		super.clickOnMenu("Administrator", "Dashboard");
+		
+		super.checkInputBoxHasValue("ratioOfFlaggedPatata",ratioOfFlaggedPatata);
+		super.checkInputBoxHasValue("ratioOfPatataWithXXX",ratioOfPatataWithXXX);
+		super.checkInputBoxHasValue("avgPatataValueByEur",avgPatataValueByEur);
+		super.checkInputBoxHasValue("avgPatataValueByGbp",avgPatataValueByGbp);
+		super.checkInputBoxHasValue("stddevPatataValueByEur",stddevPatataValueByEur);
+		super.checkInputBoxHasValue("stddevPatataValueByGbp",stddevPatataValueByGbp);
 		
 		super.checkInputBoxHasValue("numberOfPrivateTasks",numberOfPrivateTasks);
 		super.checkInputBoxHasValue("numberOfPublicTasks",numberOfPublicTasks);
