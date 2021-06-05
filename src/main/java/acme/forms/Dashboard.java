@@ -15,6 +15,13 @@ public class Dashboard implements Serializable {
 
 	// Attributes
 
+	double					ratioOfFlaggedPatata;
+	double					ratioOfPatataWithXXX;
+	double					avgPatataValueByEur;
+	double 					avgPatataValueByGbp;
+	double					stddevPatataValueByEur;
+	double					stddevPatataValueByGbp;
+	
 	int						numberOfPrivateTasks;
 	int						numberOfPublicTasks;
 	

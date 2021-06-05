@@ -20,7 +20,7 @@ anonymous.shout.form.label.text = Texto:
 anonymous.shout.form.label.info = Info:
 
 anonymous.shout.form.patata = La patata de este grito:
-anonymous.shout.form.label.patataTicker = Patata ticker:
+anonymous.shout.form.label.patataTicker = Patata ticker (las y's corresponden con el año actual, las m's con el mes actual, las d's con el día actual):
 anonymous.shout.form.label.patataMoment = Patata moment:
 anonymous.shout.form.label.patataValue = Patata value:
 anonymous.shout.form.label.patataBoolean = Patata boolean
@@ -31,7 +31,7 @@ anonymous.shout.form.button.return = Volver
 anonymous.shout.form.error.spam.is-spam = Este grito es spam, por lo que no se puede publicar
 anonymous.shout.form.error.spam.has-errors = Ha ocurrido un error, por favor refresque e inténtelo de nuevo
 
-anonymous.shout.form.error.patata-ticker-pattern = Debe encajar en el patrón: yyyy-mm-dd (las y's el año actual, las m's el mes actual, las d's el día actual)
+anonymous.shout.form.error.patata-ticker-pattern = Debe encajar en el patrón: yyyy-mm-dd (las y's corresponden con el año actual, las m's con el mes actual, las d's con el día actual)
 anonymous.shout.form.error.patata-ticker-unique = Este ticker ya existe
 
 anonymous.shout.form.error.patata-moment = El patataMoment debe ser futuro respecto a la creación del grito

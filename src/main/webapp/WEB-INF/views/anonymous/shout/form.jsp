@@ -38,7 +38,7 @@
 		<br>
 		<h3><acme:message code="anonymous.shout.form.patata"/></h3>
 		<br>
-		<acme:form-textbox code="anonymous.shout.form.label.patataTicker" path="patata.patataTicker"/>
+		<acme:form-textbox code="anonymous.shout.form.label.patataTicker" path="patata.patataTicker" placeholder="yyyy-mm-dd"/>
 		<acme:form-moment code="anonymous.shout.form.label.patataMoment" path="patata.patataMoment"/>
 		<acme:form-money code="anonymous.shout.form.label.patataValue" path="patata.patataValue"/>
 		<acme:form-checkbox code="anonymous.shout.form.label.patataBoolean" path="patata.patataBoolean"/>

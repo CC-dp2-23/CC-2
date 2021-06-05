@@ -1149,37 +1149,37 @@
 	
 	<bean id="money01" class="acme.framework.datatypes.Money" >
 		<property name="amount" value="10"/>
-		<property name="currency" value="€"/>
+		<property name="currency" value="EUR"/>
 	</bean>
 	  
 	<bean id="money02" class="acme.framework.datatypes.Money" >
 		<property name="amount" value="20"/>
-		<property name="currency" value="€"/>
+		<property name="currency" value="EUR"/>
 	</bean>  
 	    
 	<bean id="money03" class="acme.framework.datatypes.Money" >
 		<property name="amount" value="30"/>
-		<property name="currency" value="€"/>
+		<property name="currency" value="EUR"/>
 	</bean>
 	
 	<bean id="money04" class="acme.framework.datatypes.Money" >
 		<property name="amount" value="40"/>
-		<property name="currency" value="€"/>
+		<property name="currency" value="EUR"/>
 	</bean>
 	  
 	<bean id="money05" class="acme.framework.datatypes.Money" >
 		<property name="amount" value="50"/>
-		<property name="currency" value="€"/>
+		<property name="currency" value="EUR"/>
 	</bean>
 	  
 	<bean id="money06" class="acme.framework.datatypes.Money" >
 		<property name="amount" value="60"/>
-		<property name="currency" value="€"/>
+		<property name="currency" value="GBP"/>
 	</bean>
 	
 	<bean id="money07" class="acme.framework.datatypes.Money" >
 		<property name="amount" value="70"/>
-		<property name="currency" value="€"/>
+		<property name="currency" value="GBP"/>
 	</bean>
 	
 </beans>

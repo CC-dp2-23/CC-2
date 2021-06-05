@@ -20,7 +20,7 @@ anonymous.shout.form.label.text = Text:
 anonymous.shout.form.label.info = Info:
 
 anonymous.shout.form.patata = This shout's patata:
-anonymous.shout.form.label.patataTicker = Patata ticker:
+anonymous.shout.form.label.patataTicker = Patata ticker (the y's correspond to the current year, the m's to the current month and the d's to the current day):
 anonymous.shout.form.label.patataMoment = Patata moment:
 anonymous.shout.form.label.patataValue = Patata value:
 anonymous.shout.form.label.patataBoolean = Patata boolean
@@ -31,7 +31,7 @@ anonymous.shout.form.button.return = Return
 anonymous.shout.form.error.spam.is-spam = This shout is spam, and therefore will not be allowed to be published
 anonymous.shout.form.error.spam.has-errors = An error has occurred, please refresh and try again
 
-anonymous.shout.form.error.patata-ticker-pattern = Must match pattern: yyyy-mm-dd (y's current year, m's current month, d's current day)
+anonymous.shout.form.error.patata-ticker-pattern = Must match pattern: yyyy-mm-dd (the y's correspond to the current year, the m's to the current month and the d's to the current day)
 anonymous.shout.form.error.patata-ticker-unique = This ticker already exists
 
 anonymous.shout.form.error.patata-moment = The patataMoment must be future when the shout is created

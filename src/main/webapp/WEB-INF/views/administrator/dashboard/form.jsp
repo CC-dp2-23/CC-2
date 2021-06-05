@@ -19,6 +19,14 @@ text-align: center
 <br />
 <acme:form>
 
+	<acme:form-double code="administrator.dashboard.form.patata.ratio-patata-boolean" path="ratioOfFlaggedPatata"/>
+	<acme:form-double code="administrator.dashboard.form.patata.ratio-patata-XXX" path="ratioOfPatataWithXXX"/>
+	<acme:form-double code="administrator.dashboard.form.patata.patata-value-avg-eur" path="avgPatataValueByEur"/>
+	<acme:form-double code="administrator.dashboard.form.patata.patata-value-avg-gbp" path="avgPatataValueByGbp"/>
+	<acme:form-double code="administrator.dashboard.form.patata.patata-value-stddev-eur" path="stddevPatataValueByEur"/>
+	<acme:form-double code="administrator.dashboard.form.patata.patata-value-stddev-gbp" path="stddevPatataValueByGbp"/>
+	<br />
+	<br />
 	<acme:form-integer code="administrator.dashboard.form.tasks.private" path="numberOfPrivateTasks"/>
 	<acme:form-integer code="administrator.dashboard.form.tasks.public" path="numberOfPublicTasks"/>
 	<br />
