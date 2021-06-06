@@ -19,7 +19,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.patatas.Patata;
 import acme.entities.shouts.Shout;
 import acme.framework.repositories.AbstractRepository;
 
@@ -31,9 +30,6 @@ public interface AnonymousShoutRepository extends AbstractRepository {
 
 	@Query("select s from Shout s where s.id = :id")
 	Shout findOneShoutById(@Param("id") int id);
-	
-	@Query("select s.patata from Shout s where s.id = :shoutId")
-	Patata findOnePatataByShoutId(@Param("shoutId") int id);
 
 	@Query("select count(a)>0 from Patata a where a.patataTicker = :ticker")
 	boolean isPatataTickerExist(@Param("ticker") String ticker);

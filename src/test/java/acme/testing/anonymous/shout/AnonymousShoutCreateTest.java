@@ -27,7 +27,7 @@ public class AnonymousShoutCreateTest extends AcmePlannerTest {
 		super.fillInputBoxIn("text", text);
 		super.fillInputBoxIn("info", info);
 		
-		final String patataTicker = this.getTickerFechaActual();
+		final String patataTicker = this.getTickerFechaActual(); // yyyy-mm-dd
 		
 		super.fillInputBoxIn("patata.patataTicker", patataTicker);
 		super.fillInputBoxIn("patata.patataMoment", patataMoment);
@@ -40,6 +40,7 @@ public class AnonymousShoutCreateTest extends AcmePlannerTest {
 		
 		super.checkColumnHasValue(recordIndex, 1, author);
 		super.checkColumnHasValue(recordIndex, 2, text);
+		super.checkColumnHasValue(recordIndex, 3, patataTicker);
 		
 		super.clickOnListingRecord(recordIndex);
 		
